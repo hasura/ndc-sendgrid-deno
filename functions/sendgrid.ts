@@ -1,9 +1,5 @@
 import { sendSimpleMail, IResult } from "https://deno.land/x/sendgrid/mod.ts";
 
-declare global {
-	var Deno: any;
-}
-
 export async function send(subject: string, to: string, from: string, plain: string, html: string ): Promise<IResult> {
 	const API_KEY = Deno.env.get("SENDGRID_API_KEY");
 
