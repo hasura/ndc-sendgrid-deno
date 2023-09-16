@@ -5,6 +5,10 @@ This repository provides a example Typescript function that can be used with the
 
 To deploy from the Hasura CLI do
 
-```bash
-> hasura3 connector create sendgrid:deno:v1 --github-repo-url https://github.com/hasura/ndc-typescript-deno/tree/main --config-file config.json --volume ./functions:/functions --env SENDGRID_API_KEY='YOUR_SENDGRID_API_KEY'
+```
+hasura3 connector create sendgrid:deno:v1 \
+  --github-repo-url https://github.com/hasura/ndc-typescript-deno/tree/main \
+  --config-file config.json --volume ./functions:/functions \
+  --env SENDGRID_API_KEY='YOUR_SENDGRID_API_KEY' \
+  --env SERVICE_TOKEN_SECRET='MY-PRESHARED-HASURA-TOKEN'
 ```
