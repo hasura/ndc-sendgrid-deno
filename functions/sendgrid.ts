@@ -1,4 +1,4 @@
-import { sendSimpleMail, IResult } from "https://deno.land/x/sendgrid/mod.ts";
+import { sendSimpleMail, IResult } from 'https://deno.land/x/sendgrid@0.0.3/mod.ts';
 
 /**
  * Uses the SendGrid API to send an email.
@@ -12,6 +12,10 @@ import { sendSimpleMail, IResult } from "https://deno.land/x/sendgrid/mod.ts";
  */
 export async function send(subject: string, to: string, from: string, plain: string, html: string ): Promise<IResult> {
 	const API_KEY = Deno.env.get("SENDGRID_API_KEY");
+
+	if(! API_KEY) {
+		throw new Error('Error: SENDGRID_API_KEY environment variable must be set.');
+	}
 
 	const response = await sendSimpleMail(
 		{
