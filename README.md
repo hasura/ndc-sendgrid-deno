@@ -15,6 +15,31 @@ hasura3 connector create sendgrid:deno:v1 \
   --env SERVICE_TOKEN_SECRET='MY-PRESHARED-HASURA-TOKEN'
 ```
 
+## Deploying to Hasura Cloud
+
+Update your `metadata.hml` using the [Hasura VSCode LSP](https://marketplace.visualstudio.com/items?itemName=HasuraHQ.hasura)
+
+Add your deployed connector's URL to the `DataSource` section.
+
+Run the code actions:
+
+```
+> Hasura: Refresh data source
+> Hasura: Track all collections...
+```
+
+Find an existing project or create one:
+
+```
+hasura3 cloud project create
+```
+
+Then use your metadata referencing your connector to create a build:
+
+```
+hasura3 cloud build create --project-id MY-PROJECT-ID --metadata-file metadata.hml
+```
+
 ## Using as a Stand-Alone Connector
 
 While you can deploy using the above command referencing the typescript connector
