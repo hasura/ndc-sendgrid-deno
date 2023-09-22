@@ -1,62 +1,15 @@
+kind: "AuthConfig"
+allowRoleEmulationFor: "admin"
+webhook:
+  mode: "POST"
+  webhookUrl: "https://auth.pro.hasura.io/webhook/ddn?role=admin"
+---
 kind: DataSource
 name: sendgrid
-dataConnectorUrl: 'https://connector-0bfdf849-4613-4982-a98f-8e1ca1a40f54-hyc5v23h6a-ue.a.run.app'
-schema: {"scalar_types":{"Boolean":{"aggregate_functions":{},"comparison_operators":{},"update_operators":{}},"String":{"aggregate_functions":{},"comparison_operators":{},"update_operators":{}}},"object_types":{"send_output":{"fields":{"errors":{"type":{"type":"array","element_type":{"type":"named","name":"String"}}},"success":{"type":{"type":"named","name":"Boolean"}}}}},"collections":[],"functions":[],"procedures":[{"name":"send","description":"","arguments":{"from":{"description":"","type":{"type":"named","name":"String"}},"html":{"description":"","type":{"type":"named","name":"String"}},"plain":{"description":"","type":{"type":"named","name":"String"}},"subject":{"description":"","type":{"type":"named","name":"String"}},"to":{"description":"","type":{"type":"named","name":"String"}}},"result_type":{"type":"named","name":"send_output"}}]}
+dataConnectorUrl: 'http://my-connector-url'
 auth:
   type: "Bearer"
-  token: "super_secret111"
----
-kind: DataConnectorScalarRepresentation
-dataSource: sendgrid
-scalarType: Boolean
-representation: Boolean
----
-kind: DataConnectorScalarRepresentation
-dataSource: sendgrid
-scalarType: String
-representation: String
----
-kind: ObjectType
-name: send_output
-graphql:
-  typeName: SendOutput
-fields:
-  - name: errors
-    type: String
-  - name: success
-    type: Boolean
+  token: "my-secret-token"
 
----
-
-kind: Command
-name: send
-outputType: send_output
-graphql: 
-  rootFieldName: send
-  rootFieldKind: Mutation
-arguments:
-  - name: from
-    type: String
-  - name: html
-    type: String
-  - name: plain
-    type: String
-  - name: subject
-    type: String
-  - name: to
-    type: String
-
-source: 
-  procedure: send
-  dataSource: sendgrid
-
----
-
-kind: TypeOutputPermissions
-typeName: send_output
-permissions:
-  admin:
-    fields:
-      - "errors"
-      - "success"
-  
+# Run> Hasura: Refresh data source
+# Run> Hasura: Track all collections...
