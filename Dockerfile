@@ -5,3 +5,4 @@
 FROM ghcr.io/hasura/ndc-typescript-deno:main
 
 COPY ./functions:/functions
+RUN EARLY_ENTRYPOINT_EXIT=true ./entrypoint.sh /app/ndc-typescript-deno --configuration /placeholder-config.json
