@@ -9,7 +9,7 @@ To deploy from the Hasura CLI do
 ```
 hasura3 connector create sendgrid:deno:v1 \
   --github-repo-url https://github.com/hasura/ndc-typescript-deno/tree/main \
-  --config-file config.json \
+  --config-file <(echo '{}') \
   --volume ./functions:/functions \
   --env SENDGRID_API_KEY='YOUR_SENDGRID_API_KEY' \
   --env SERVICE_TOKEN_SECRET='MY-PRESHARED-HASURA-TOKEN'
@@ -54,7 +54,7 @@ by the Hasura community and on the [Connector Hub](https://hasura.io/connectors)
 ```
 hasura3 connector create sendgrid:deno:standalone:v1 \
   --github-repo-url https://github.com/hasura/ndc-sendgrid-deno/tree/main \
-  --config-file config.json \
+  --config-file <(echo '{}') \
   --env SENDGRID_API_KEY='YOUR_SENDGRID_API_KEY' \
   --env SERVICE_TOKEN_SECRET='MY-PRESHARED-HASURA-TOKEN'
 ```

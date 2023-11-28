@@ -1,15 +1,21 @@
-kind: "AuthConfig"
-allowRoleEmulationFor: "admin"
-webhook:
-  mode: "POST"
-  webhookUrl: "https://auth.pro.hasura.io/webhook/ddn?role=admin"
+kind: AuthConfig
+version: v1
+definition:
+  allowRoleEmulationBy: admin
+  mode:
+    webhook:
+      method: Post
+      url: https://auth.pro.hasura.io/webhook/ddn?role=admin
 ---
-kind: DataSource
-name: sendgrid
-dataConnectorUrl: 'http://my-connector-url'
-auth:
-  type: "Bearer"
-  token: "my-secret-token"
+kind: DataConnector
+version: v1
+definition:
+  name: sendgrid
+  url:
+    singleUrl: 'http://my-connector-url'
+  headers:
+    Authentication: 
+      value: Bearer MY-PRESHARED-HASURA-TOKEN
 
-# Run> Hasura: Refresh data source
+# Run> Hasura: Refresh data connector
 # Run> Hasura: Track all collections...
