@@ -2,7 +2,7 @@ import { sendSimpleMail, IResult } from 'https://deno.land/x/sendgrid@0.0.3/mod.
 
 /**
  * Uses the SendGrid API to send an email.
- * 
+ *
  * @param subject The email subject
  * @param to The address to send the email to
  * @param from Who to list as the sender of the email

@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "HasuraHQ.hasura",
+    "denoland.vscode-deno"
+  ]
+}

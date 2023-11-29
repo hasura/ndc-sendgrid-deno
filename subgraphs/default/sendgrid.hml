@@ -1,0 +1,12 @@
+kind: DataConnector
+version: v1
+definition:
+  name: sendgrid
+  url:
+    singleUrl: 'http://my-connector-url'
+  headers:
+    Authentication:
+      value: Bearer MY-PRESHARED-HASURA-TOKEN
+
+# Run> Hasura: Refresh data connector
+# Run> Hasura: Track all collections...

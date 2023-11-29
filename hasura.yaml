@@ -1,0 +1,15 @@
+version: 1
+# TODO: Put your project name here
+project: your-project-name
+
+# A build profile specifies your projects environment
+# and the association of subgraphs to HML files
+# You can create different build profiles for different environments,
+# like production and staging, which may reference environment specific auth configs
+# We have created one for you to get you started
+buildProfiles:
+  - build-profile.yaml
+
+# Default build profile refers to build profile
+# that is used when you create a build and don't specify the build profile
+defaultBuildProfile: build-profile.yaml

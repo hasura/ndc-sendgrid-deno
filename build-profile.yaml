@@ -1,0 +1,19 @@
+version: 2
+spec:
+  environment: default
+  mode: replace
+  supergraph:
+    resources:
+      - supergraph/*
+
+  # Subgraphs can be used to group certain objects of your metadata
+  # in a way that makes sense for you and your team
+  # You can have multiple HML files belong to a subgraph
+  # and you can have multiple subgraphs in a project
+  # We have created a default subgraph for you, and added a HML file to it to get you started
+  # Please note that default is a special subgraph that is created for every project
+  # and it cannot be deleted
+  subgraphs:
+  - name: default
+    resources:
+    - subgraphs/default/**/*.hml
