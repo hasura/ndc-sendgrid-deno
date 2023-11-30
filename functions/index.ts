@@ -1,8 +1,13 @@
-import { sendSimpleMail, IResult } from 'https://deno.land/x/sendgrid@0.0.3/mod.ts';
+import { sendSimpleMail } from 'https://deno.land/x/sendgrid@0.0.3/mod.ts';
+
+type Result = {
+	success: boolean,
+	errors: string[]
+}
 
 /**
  * Uses the SendGrid API to send an email.
- * 
+ *
  * @param subject The email subject
  * @param to The address to send the email to
  * @param from Who to list as the sender of the email
@@ -10,7 +15,7 @@ import { sendSimpleMail, IResult } from 'https://deno.land/x/sendgrid@0.0.3/mod.
  * @param html The HTML content of the email
  * @returns Success or errors
  */
-export async function send(subject: string, to: string, from: string, plain: string, html: string ): Promise<IResult> {
+export async function send(subject: string, to: string, from: string, plain: string, html: string ): Promise<Result> {
 	const API_KEY = Deno.env.get("SENDGRID_API_KEY");
 
 	if(! API_KEY) {
@@ -32,5 +37,8 @@ export async function send(subject: string, to: string, from: string, plain: str
 		},
 	);
 
-	return response;
+	return {
+		success: response.success,
+		errors: response.errors ?? []
+	};
 }
